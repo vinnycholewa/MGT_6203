@@ -1,0 +1,154 @@
+Data analytics is a broader term of which data analysis forms a subcomponent. Data analysis refers to the process of compiling and analyzing data to support decision-making, whereas data analytics also includes the tools and techniques to do so. 
+
+Data analytics for business involves the use of technical tools and computational data analysis techniques in order to present findings to management to help inform business decision making. The goal of this approach is to help an organization achieve certain business objectives. 
+
+Data analysis is the process of examining, transforming, and arranging raw data in a way to generate useful information from it. Data analysis allows for the evaluation of data through analytical and logical reasoning to lead to some sort of outcome or conclusion in some context. It is a multi-faceted process that involves a number of steps, approaches, and diverse techniques. The approach one takes to data analysis depends largely on the type of data available for analysis and the purpose of the analysis. 
+
+ 
+
+Linear Regression Notes (A – H) 
+
+*also known as bivariate regression* 
+
+A. LR Steps 
+
+Statement of problem 
+
+Using regression for (I.e. diagnostic, predictive, prescription) 
+
+Selection of relevant variables 
+
+Data Collection  
+
+Choice of fitting method (I.e. OLS, GLS, maximum likelihood ) 
+
+Model Fitting 
+
+Model validation 
+
+Refining the model & iterating from step 3 
+
+Use of Model  
+
+B. Real Estate Example (Ecdat Package in R) 
+
+546 houses in Windsor Canda from 1987 
+
+Mean of a right skewed distribution will be larger than the median (T/F question) - True  
+
+Qualitative variables are called categorical variables  
+
+Before doing regression it's important to do exploratory analysis  
+
+Histograms 
+
+Correlation matrixes  
+
+Scatterplots  
+
+ 
+
+C.Notation in Regression Analysis  
+
+Error term is assumed to be normally distributed with a mean of 0 and standard deviation of sigma across all values of x.  
+
+Constant sigma (constant standard deviation) is called homoscedasticity  
+
+In OLS, first you compute y-bar (mean value of y), then you compute slope (b1) and intercept (b0). You need to calculate total devation and parse that into explained vs unexplained. OLS looks to minimize the unexplained deviation (actual – predicted) or the SSE.  
+
+
+ 
+
+
+ 
+
+H.R^2 and Adjusted R^2 
+
+R^2 = 1 - (SSE/SST) = SSR/SST = Explained Deviation (SSR)/ Total Deviation (SST) 
+
+How much of the variation of Y (from the mean) has been explained 
+
+Adjust R^2 = 1 - {SSE/(n-p-1)}/{SST/(n-1)} 
+
+Adjusted R^2 adds a penalty for the number of independent variables (p) 
+
+F statistic = (SSR/p)/(SSE/(n-p-1) = (R^2/p)/(1-R^2)/(n-p-1) 
+
+F statistic is the probability that H0 (the fit of the multiple regression model and intercept only model are equal) in favor of H1 (the model is significant) 
+
+Standard Error – standard deviation of their respective  
+
+Ceteris paribus – this means all else is the same or is held constant  
+
+I.Multiple Regression using R 
+
+Remember, p-value is the probability to reject the null hypothesis (the factor is the same as 0). In terms of assessing the factor's significance, you want the p-value to be large to say it is significant   
+
+Common Problems Seen in Regression 
+
+
+Non-liberality of model: 
+
+Can you model non-linear relationships with higher order terms? 
+
+Can you use variance reducing transformation (I.e. log) 
+
+Are their outliers you can remove? 
+
+Is there an important variable that you left out of your mode? (Omitted Variable problem) 
+
+Correlation of Error Terms (Autocorrelation): 
+
+The model assumes the error terms are not correlated when estimating the standard errors  
+
+Durbin-Watson test is used to detect error term correlations 
+
+If there is correlation: 
+
+The estimated standard errors will underestimate the true standard errors 
+
+P-values will be smaller than they should 
+
+The model robustness will be overstated  
+
+Heteroskedasticity (non-constant error term) 
+
+To detect look at residuals vs fitted values plot  
+
+If there is heteroskedasticity, the transformation of Y variable can be used (I.e. ln or log of Y) 
+
+Outliers – one way to detect is to plot residuals (or standardized residuals) against predicted values of Y  
+
+If the value is 2-3 standard deviations from predicted value this should be deemed an outlier 
+
+High Leverage Points – observations that have a predicted value is outside the normal range of predicted values  
+
+A point has high leverage if it's removal by itself, or with 2-3 other points, causes notable changes in model.  
+
+It's best to run the model with both the leveraged and without the leveraged point to see the effect on the fitted line 
+
+Cook's Distance – measures difference between regression coefficients obtained from the full data and from deleting observation(i)  
+
+C(i) > 1 and label them as highly influential  
+
+Multicollinearity (independent variables are correlated) 
+
+To detect, one approach is to use Variance Inflation Factors (VIF) 
+
+Regress predictor variable against all other predictor variables and check R^2 (if it has a strong relationship ((VIF > 0.5)) 
+
+Solutions: 
+
+Pick one variable if multiple variables measures same thing 
+
+Use PCA 
+
+Problems? 
+
+
+ 
+
+
+ 
+
+ 
